@@ -1,8 +1,14 @@
 from neo4j import GraphDatabase
 import pandas as pd
 
-URI = "bolt://localhost:7687"
-driver = GraphDatabase.driver(URI)
+config = {}
+with open("config.txt", "r") as f:
+    for line in f:
+        key, value = line.strip().split("=", 1)
+        config[key] = value
+
+driver = GraphDatabase.driver(config["URI"], auth=(config["USERNAME"], config["PASSWORD"]))
+
 
 df = pd.read_csv("fpl_two_seasons.csv", header=0)
 
