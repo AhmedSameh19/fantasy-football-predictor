@@ -1,0 +1,29 @@
+//1. Query 1
+MATCH (g:Gameweek)
+return count(g)
+
+
+//2. Query 2
+MATCH (p:Player)
+return count(p)
+
+
+//3. Query 3
+MATCH (t1:Team)<-[]-(:Fixture)<-[:HAS_FIXTURE]-(:Gameweek)<-[:HAS_GW]-(s:Season {season_name:"2021-22"})
+WHERE NOT EXISTS {
+    MATCH (t1)<-[]-(:Fixture)<-[:HAS_FIXTURE]-(:Gameweek)<-[:HAS_GW]-(:Season {season_name:"2022-23"})
+}
+RETURN DISTINCT t1.name
+
+
+//4. Query 4
+MATCH (p:Player)-[pl:PLAYED_IN]->(:Fixture)<-[:HAS_FIXTURE]-(:Gameweek)<-[:HAS_GW]-(s:Season {season_name:"2022-23"})
+RETURN p.player_name, pl.total_points
+ORDER BY pl.total_points DESC
+LIMIT 1
+
+
+//5. Query 5
+MATCH (p:Player)-[:PLAYED_IN]->(:Fixture)
+WHERE p.player_name CONTAINS "Elneny"
+RETURN count(p)

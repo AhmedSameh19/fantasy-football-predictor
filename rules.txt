@@ -1,0 +1,5 @@
+
+
+def_score = (assists * 3) + (minutes>0 + minutes>=60) - (penalties_missed * 2)
+            - (own_goals * 2) - yellow_cards - (red_cards * 3) + (goals * 6)
+            + 4 * (minutes_points > 0) - (goals_conceded // 2) + bonus
