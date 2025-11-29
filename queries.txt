@@ -18,12 +18,12 @@ RETURN DISTINCT t1.name
 
 //4. Query 4
 MATCH (p:Player)-[pl:PLAYED_IN]->(:Fixture)<-[:HAS_FIXTURE]-(:Gameweek)<-[:HAS_GW]-(s:Season {season_name:"2022-23"})
-RETURN p.player_name, pl.total_points
+RETURN (pl.total_points + " points by " + p.player_name) AS Answer
 ORDER BY pl.total_points DESC
 LIMIT 1
 
 
 //5. Query 5
-MATCH (p:Player)-[:PLAYED_IN]->(:Fixture)
-WHERE p.player_name CONTAINS "Elneny"
+MATCH (p:Player)-[pl:PLAYED_IN]->(:Fixture)
+WHERE p.player_name CONTAINS "Elneny" AND pl.minutes > 0
 RETURN count(p)
