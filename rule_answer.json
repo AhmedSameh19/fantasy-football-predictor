@@ -1,44 +1,130 @@
 [
   {
     "player": "John Stones",
-    "not_def_fixtures": 3,
+    "not_def_fixtures": 0,
+    "total_fixtures": 38,
+    "fixture_details": [
+
+    ]
+  },
+  {
+    "player": "Alexandre Lacazette",
+    "not_def_fixtures": 15,
     "total_fixtures": 38,
     "fixture_details": [
       {
-        "fixture_number": 266,
+        "fixture_number": 281,
         "matches_def": false,
-        "def_score": 6,
-        "total_points": 8,
+        "def_score": 12.0,
+        "total_points": 6,
         "season": "2021-22"
       },
       {
-        "fixture_number": 285,
+        "fixture_number": 71,
         "matches_def": false,
-        "def_score": 6,
+        "def_score": 7.0,
+        "total_points": 5,
+        "season": "2021-22"
+      },
+      {
+        "fixture_number": 261,
+        "matches_def": false,
+        "def_score": 1.0,
+        "total_points": 2,
+        "season": "2021-22"
+      },
+      {
+        "fixture_number": 251,
+        "matches_def": false,
+        "def_score": 9.0,
+        "total_points": 5,
+        "season": "2021-22"
+      },
+      {
+        "fixture_number": 221,
+        "matches_def": false,
+        "def_score": 6.0,
+        "total_points": 2,
+        "season": "2021-22"
+      },
+      {
+        "fixture_number": 151,
+        "matches_def": false,
+        "def_score": 13.0,
         "total_points": 7,
         "season": "2021-22"
       },
       {
-        "fixture_number": 215,
+        "fixture_number": 187,
         "matches_def": false,
-        "def_score": 6,
-        "total_points": 7,
+        "def_score": 17.0,
+        "total_points": 11,
+        "season": "2021-22"
+      },
+      {
+        "fixture_number": 101,
+        "matches_def": false,
+        "def_score": 6.0,
+        "total_points": 2,
+        "season": "2021-22"
+      },
+      {
+        "fixture_number": 81,
+        "matches_def": false,
+        "def_score": 6.0,
+        "total_points": 2,
+        "season": "2021-22"
+      },
+      {
+        "fixture_number": 311,
+        "matches_def": false,
+        "def_score": 1.0,
+        "total_points": 2,
+        "season": "2021-22"
+      },
+      {
+        "fixture_number": 236,
+        "matches_def": false,
+        "def_score": 9.0,
+        "total_points": 5,
+        "season": "2021-22"
+      },
+      {
+        "fixture_number": 291,
+        "matches_def": false,
+        "def_score": 6.0,
+        "total_points": 2,
+        "season": "2021-22"
+      },
+      {
+        "fixture_number": 161,
+        "matches_def": false,
+        "def_score": 7.0,
+        "total_points": 3,
+        "season": "2021-22"
+      },
+      {
+        "fixture_number": 304,
+        "matches_def": false,
+        "def_score": 1.0,
+        "total_points": 2,
+        "season": "2021-22"
+      },
+      {
+        "fixture_number": 114,
+        "matches_def": false,
+        "def_score": 1.0,
+        "total_points": 2,
         "season": "2021-22"
       }
     ]
   },
   {
     "player": "César Azpilicueta",
-    "not_def_fixtures": 1,
+    "not_def_fixtures": 0,
     "total_fixtures": 38,
     "fixture_details": [
-      {
-        "fixture_number": 63,
-        "matches_def": false,
-        "def_score": 8,
-        "total_points": 10,
-        "season": "2021-22"
-      }
+
     ]
   },
   {
@@ -49,70 +135,70 @@
       {
         "fixture_number": 243,
         "matches_def": false,
-        "def_score": 6,
+        "def_score": 6.0,
         "total_points": 3,
         "season": "2022-23"
       },
       {
         "fixture_number": 209,
         "matches_def": false,
-        "def_score": 6,
+        "def_score": 6.0,
         "total_points": 3,
         "season": "2022-23"
       },
       {
         "fixture_number": 22,
         "matches_def": false,
-        "def_score": 1,
+        "def_score": 1.0,
         "total_points": 2,
         "season": "2022-23"
       },
       {
         "fixture_number": 211,
         "matches_def": false,
-        "def_score": 0,
+        "def_score": 0.0,
         "total_points": 2,
         "season": "2022-23"
       },
       {
         "fixture_number": 41,
         "matches_def": false,
-        "def_score": 1,
+        "def_score": 1.0,
         "total_points": 2,
         "season": "2022-23"
       },
       {
         "fixture_number": 228,
         "matches_def": false,
-        "def_score": 1,
+        "def_score": 1.0,
         "total_points": 2,
         "season": "2022-23"
       },
       {
         "fixture_number": 162,
         "matches_def": false,
-        "def_score": 1,
+        "def_score": 1.0,
         "total_points": 2,
         "season": "2022-23"
       },
       {
         "fixture_number": 178,
         "matches_def": false,
-        "def_score": 6,
+        "def_score": 6.0,
         "total_points": 3,
         "season": "2022-23"
       },
       {
         "fixture_number": 2,
         "matches_def": false,
-        "def_score": 1,
+        "def_score": 1.0,
         "total_points": 2,
         "season": "2022-23"
       },
       {
         "fixture_number": 231,
         "matches_def": false,
-        "def_score": 0,
+        "def_score": 0.0,
         "total_points": 2,
         "season": "2022-23"
       }
@@ -126,128 +212,16 @@
       {
         "fixture_number": 150,
         "matches_def": false,
-        "def_score": 4,
+        "def_score": 4.0,
         "total_points": 5,
         "season": "2022-23"
       },
       {
         "fixture_number": 160,
         "matches_def": false,
-        "def_score": 0,
+        "def_score": 0.0,
         "total_points": 1,
         "season": "2022-23"
-      }
-    ]
-  },
-  {
-    "player": "Alexandre Lacazette",
-    "not_def_fixtures": 15,
-    "total_fixtures": 38,
-    "fixture_details": [
-      {
-        "fixture_number": 281,
-        "matches_def": false,
-        "def_score": 12,
-        "total_points": 6,
-        "season": "2021-22"
-      },
-      {
-        "fixture_number": 71,
-        "matches_def": false,
-        "def_score": 7,
-        "total_points": 5,
-        "season": "2021-22"
-      },
-      {
-        "fixture_number": 261,
-        "matches_def": false,
-        "def_score": 1,
-        "total_points": 2,
-        "season": "2021-22"
-      },
-      {
-        "fixture_number": 251,
-        "matches_def": false,
-        "def_score": 9,
-        "total_points": 5,
-        "season": "2021-22"
-      },
-      {
-        "fixture_number": 221,
-        "matches_def": false,
-        "def_score": 6,
-        "total_points": 2,
-        "season": "2021-22"
-      },
-      {
-        "fixture_number": 151,
-        "matches_def": false,
-        "def_score": 12,
-        "total_points": 7,
-        "season": "2021-22"
-      },
-      {
-        "fixture_number": 187,
-        "matches_def": false,
-        "def_score": 15,
-        "total_points": 11,
-        "season": "2021-22"
-      },
-      {
-        "fixture_number": 101,
-        "matches_def": false,
-        "def_score": 6,
-        "total_points": 2,
-        "season": "2021-22"
-      },
-      {
-        "fixture_number": 81,
-        "matches_def": false,
-        "def_score": 6,
-        "total_points": 2,
-        "season": "2021-22"
-      },
-      {
-        "fixture_number": 311,
-        "matches_def": false,
-        "def_score": 1,
-        "total_points": 2,
-        "season": "2021-22"
-      },
-      {
-        "fixture_number": 236,
-        "matches_def": false,
-        "def_score": 9,
-        "total_points": 5,
-        "season": "2021-22"
-      },
-      {
-        "fixture_number": 291,
-        "matches_def": false,
-        "def_score": 6,
-        "total_points": 2,
-        "season": "2021-22"
-      },
-      {
-        "fixture_number": 161,
-        "matches_def": false,
-        "def_score": 7,
-        "total_points": 3,
-        "season": "2021-22"
-      },
-      {
-        "fixture_number": 304,
-        "matches_def": false,
-        "def_score": 1,
-        "total_points": 2,
-        "season": "2021-22"
-      },
-      {
-        "fixture_number": 114,
-        "matches_def": false,
-        "def_score": 1,
-        "total_points": 2,
-        "season": "2021-22"
       }
     ]
   }

@@ -1,0 +1,33 @@
+MATCH (f:Fixture)<-[:PLAYED_IN]-(p:Player)-[:PLAYS_AS]->(pos1:Position)
+WHERE EXISTS {
+    MATCH (p)-[:PLAYS_AS]->(pos2:Position)
+    WHERE pos2.name <> pos1.name
+}
+
+WITH p, COUNT(DISTINCT(f)) AS total_fixtures
+
+MATCH (f:Fixture)<-[pi:PLAYED_IN]-(p)-[:PLAYS_AS]->(pos1:Position {name: "DEF"})
+WITH p, total_fixtures, f, pi,
+(
+  (pi.assists * 3)
+  + CASE WHEN pi.minutes > 0 THEN 1 ELSE 0 END
+  + CASE WHEN pi.minutes >= 60 THEN 1 ELSE 0 END
+  - (pi.penalties_missed * 2)
+  - (pi.own_goals * 2)
+  - pi.yellow_cards
+  - (pi.red_cards * 3)
+  + (pi.goals_scored * 6)
+  + (pi.clean_sheets * 4 * CASE WHEN pi.minutes > 0 THEN 1 ELSE 0 END)
+  - (pi.goals_conceded / 2)
+) AS def_score
+WHERE pi.total_points <> def_score
+
+RETURN p.player_name AS player,
+       COUNT(f) AS not_def_fixtures,
+       total_fixtures,
+       COLLECT({def_score: def_score,
+                season: f.season,
+                fixture_number: f.fixture_number,
+                matches_def: false,
+                total_points: pi.total_points
+               }) AS fixture_details
