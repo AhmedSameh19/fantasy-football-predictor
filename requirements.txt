@@ -10,3 +10,4 @@ tensorflow
 langchain
 langchain-core
 huggingface_hub
+sentence-transformers
