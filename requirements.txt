@@ -7,3 +7,6 @@ lime
 missingno
 scikit-learn
 tensorflow
+langchain
+langchain-core
+huggingface_hub
