@@ -17,7 +17,11 @@ RETURN p.player_name AS player,
        SUM(r.minutes) AS minutes,
        AVG(r.form) AS avg_form;
 
-
+//Intent: player_gw_stats
+//Goal: Player performance in a specific gameweek
+MATCH (p:Player {player_name: $player})-[r:PLAYED_IN]->(f:Fixture)
+MATCH (g:Gameweek {season: $season, GW_number: $gw})-[:HAS_FIXTURE]->(f)
+RETURN p, r, f;
 
 //Intent: fixture_details
 //Goal: Show home team, away team, players and stats.

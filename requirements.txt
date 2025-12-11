@@ -11,3 +11,5 @@ langchain
 langchain-core
 huggingface_hub
 sentence-transformers
+openai
+google-genai
