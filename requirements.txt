@@ -11,3 +11,6 @@ langchain
 langchain-core
 huggingface_hub
 sentence-transformers
+neo4j
+tf-keras
+hf_xet
