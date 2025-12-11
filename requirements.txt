@@ -14,3 +14,5 @@ sentence-transformers
 neo4j
 tf-keras
 hf_xet
+openai
+google-genai
