@@ -1,3 +1,6 @@
+python-dotenv
+langchain-openai
+langchain-google-genai
 numpy
 pandas
 seaborn
