@@ -556,6 +556,7 @@ with open("config.txt", "r") as f:
         key, value = line.strip().split("=", 1)
         config[key] = value
 
+
 with driver.session() as session:
     result = session.run(
         """
@@ -583,6 +584,7 @@ with driver.session() as session:
 
     df = pd.DataFrame(result.data())
 
+
 print("Rows fetched from Neo4j:", len(df))
 
 
@@ -608,6 +610,7 @@ def get_similar_players(player_name, mode="text", top_k=5):
     RETURN node.player_name AS similar_player, score
     ORDER BY score DESC
     """
+
     with driver.session() as session:
         results = session.run(query, name=player_name, top_k=top_k)
         return [(r["similar_player"], r["score"]) for r in results]
@@ -702,6 +705,50 @@ def normalize_baseline_result(result_list):
         unified.append(item)
 
     return unified
+
+
+
+# ===== Cell 11 =====
+def get_context(question):
+    # 1️⃣ Extract structured query info
+    print("Processing question:", question)
+    category, query = classify_intent(question)
+    print("Classifying Intent", category, query)
+    _, grounded_entities = extract_entities(question)
+    print("Extracted Entities:", grounded_entities)
+    query_params = populate_query(query, grounded_entities)
+    print("Query Params:", query_params)
+
+    # 2️⃣ Run baseline Cypher query
+    with driver.session() as session:
+        result1 = session.run(query, query_params)
+        baseline = result1.data()
+    normalized_baseline = normalize_baseline_result(baseline)
+
+    # 3️⃣ Prepare player names for embedding-based retrieval
+    players = grounded_entities.get("players", [])
+    players_name = [player['grounded'] for player in players]
+
+    # 4️⃣ Get embedding-based contexts
+    embeddings_context = []
+    for player_name in players_name:
+        context = get_similar_players(player_name, mode="text_v2")
+        embeddings_context.extend(context)  # flatten
+
+    # 5️⃣ Combine results
+    unified_context = []
+
+    # Add embedding-based results, avoid duplicates
+    for player_name, score in embeddings_context:
+        unified_context.append({
+            "type": "semantic",
+            "player_name": player_name,
+            "similarity_score": score
+           })
+    unified_context.extend(normalized_baseline)
+
+    return unified_context,normalized_baseline
+
 
 
 # ===== Cell 12 =====
@@ -1121,6 +1168,7 @@ def create_knowledge_graph_visualization(baseline_context):
     )
     
     return fig
+
 
 
 
