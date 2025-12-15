@@ -1,3 +1,4 @@
+tqdm
 python-dotenv
 langchain-openai
 langchain-google-genai
