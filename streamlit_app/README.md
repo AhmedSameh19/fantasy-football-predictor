@@ -95,11 +95,6 @@ PASSWORD=your_password
 
 ## Usage
 
-### From Root Directory
-```bash
-streamlit run app_main.py
-```
-
 ### From Streamlit App Directory
 ```bash
 cd streamlit_app
