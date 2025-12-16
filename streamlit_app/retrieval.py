@@ -163,23 +163,14 @@ def get_context_enhanced(question, retrieval_method="both", embedding_model="all
 
     # Step 2: Embeddings retrieval (only if needed)
     if retrieval_method in ["embeddings", "both"]:
-        # If we haven't extracted entities yet (embeddings-only mode), extract them now
-        if not grounded_entities:
-            _, grounded_entities = extract_entities(question)
-            print(f"Grounded Entities (for embeddings): {grounded_entities}")
-
-        # Get player names for embedding search
-        players = grounded_entities.get("players", [])
-        players_name = [player['grounded'] for player in players]
 
         # Get embedding-based contexts
-        for player_name in players_name:
-            context = get_similar_players_by_embedding(
-                player_name,
-                embedding_model_key=embedding_model,
-                top_k=5
-            )
-            embeddings_context.extend(context)
+        context = get_similar_players_by_embedding(
+            question,
+            embedding_model_key=embedding_model,
+            top_k=5
+        )
+        embeddings_context.extend(context)
 
     # Step 3: Combine results
     unified_context = []

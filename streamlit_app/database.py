@@ -5,6 +5,7 @@ Handles Neo4j database connection and operations
 
 from neo4j import GraphDatabase
 import streamlit as st
+from sentence_transformers import SentenceTransformer
 from config import NEO4J_CONFIG
 
 class Neo4jConnection:
@@ -74,28 +75,48 @@ def get_kg_entities():
     }
 
 
-def get_similar_players_by_embedding(player_name, embedding_model_key="all-mpnet-base-v2", top_k=5):
+@st.cache_resource
+def load_embedding_model(model_name):
     """
-    Retrieve similar players using pre-computed embeddings from Neo4j.
+    Load and cache the sentence transformer model.
 
     Args:
-        player_name: Name of the player to find similar players for
+        model_name: Name of the sentence transformer model
+
+    Returns:
+        SentenceTransformer: Loaded model
+    """
+    return SentenceTransformer(model_name)
+
+
+def get_similar_players_by_embedding(question, embedding_model_key="all-mpnet-base-v2", top_k=5):
+    """
+    Retrieve similar players by embedding the user's question and searching the vector index.
+
+    Args:
+        question: User's question text to embed and search
         embedding_model_key: Key for the embedding model to use ("all-MiniLM-L6-v2" or "all-mpnet-base-v2")
         top_k: Number of similar players to return
 
     Returns:
-        list: List of tuples (player_name, similarity_score)
+        list: List of tuples (player_name, similarity_score, node)
     """
     from config import EMBEDDING_MODELS
 
     model_info = EMBEDDING_MODELS[embedding_model_key]
-    embedding_prop = model_info["property_name"]
+    model_name = model_info["name"]
     index_name = model_info["index_name"]
 
+    # Load the embedding model (cached)
+    embedding_model = load_embedding_model(model_name)
+
+    # Generate embedding for the question
+    question_embedding = embedding_model.encode(question, convert_to_numpy=True)
+    question_embedding_list = question_embedding.astype(float).tolist()
+
+    # Search using the question embedding
     query = f"""
-    MATCH (p:Player {{player_name: $name}})
-    WITH p.{embedding_prop} AS query_vec
-    CALL db.index.vector.queryNodes('{index_name}', $top_k, query_vec)
+    CALL db.index.vector.queryNodes('{index_name}', $top_k, $query_vec)
     YIELD node, score
     RETURN node.player_name AS similar_player, score, node
     ORDER BY score DESC
@@ -104,5 +125,5 @@ def get_similar_players_by_embedding(player_name, embedding_model_key="all-mpnet
     driver = Neo4jConnection().get_driver()
 
     with driver.session() as session:
-        results = session.run(query, name=player_name, top_k=top_k)
+        results = session.run(query, top_k=top_k, query_vec=question_embedding_list)
         return [(r["similar_player"], r["score"], r["node"]) for r in results]

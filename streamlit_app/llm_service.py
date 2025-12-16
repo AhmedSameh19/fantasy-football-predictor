@@ -78,9 +78,13 @@ User Question: {question}
 
 CRITICAL Instructions:
 - Answer the question naturally as if you already know this FPL information
-- NEVER say "from the data", "based on what I see", "from what's provided", "from the information", etc.
-- The user didn't share any data - they just asked a question. Answer it directly.
+- NEVER reference the information source in ANY way:
+  - NEVER say: "from the data", "based on what I see", "from what's provided", "from the information"
+  - NEVER say: "In this FPL info", "In the FPL data", "According to the information", "In the data"
+  - NEVER say: "The information shows", "The data indicates", "Based on the context"
+  - The user didn't share ANY data - they just asked a question. Answer it directly.
 - If you have the answer: State it confidently like a knowledgeable FPL fan would
+  - Example: "Mohamed Salah plays for Liverpool as a midfielder" (NOT "In this FPL info, Mohamed Salah...")
 - If you don't have the answer: Simply say "I don't have that information"
 - Ignore ALL technical metadata (IDs, element codes, database fields, duplicate entries, field names)
 - Extract ONLY FPL-relevant information (player names, positions, teams, stats, etc.)
@@ -148,9 +152,13 @@ User Question: {question}
 
 CRITICAL Instructions:
 - Answer the question naturally as if you already know this FPL information
-- NEVER say "from the data", "based on what I see", "from what's provided", "from the information", etc.
-- The user didn't share any data - they just asked a question. Answer it directly.
+- NEVER reference the information source in ANY way:
+  - NEVER say: "from the data", "based on what I see", "from what's provided", "from the information"
+  - NEVER say: "In this FPL info", "In the FPL data", "According to the information", "In the data"
+  - NEVER say: "The information shows", "The data indicates", "Based on the context"
+  - The user didn't share ANY data - they just asked a question. Answer it directly.
 - If you have the answer: State it confidently like a knowledgeable FPL fan would
+  - Example: "Mohamed Salah plays for Liverpool as a midfielder" (NOT "In this FPL info, Mohamed Salah...")
 - If you don't have the answer: Simply say "I don't have that information"
 - Ignore ALL technical metadata (IDs, element codes, database fields, duplicate entries, field names)
 - Extract ONLY FPL-relevant information (player names, positions, teams, stats, etc.)
@@ -213,9 +221,13 @@ User Question: {question}
 
 CRITICAL Instructions:
 - Answer the question naturally as if you already know this FPL information
-- NEVER say "from the data", "based on what I see", "from what's provided", "from the information", etc.
-- The user didn't share any data - they just asked a question. Answer it directly.
+- NEVER reference the information source in ANY way:
+  - NEVER say: "from the data", "based on what I see", "from what's provided", "from the information"
+  - NEVER say: "In this FPL info", "In the FPL data", "According to the information", "In the data"
+  - NEVER say: "The information shows", "The data indicates", "Based on the context"
+  - The user didn't share ANY data - they just asked a question. Answer it directly.
 - If you have the answer: State it confidently like a knowledgeable FPL fan would
+  - Example: "Mohamed Salah plays for Liverpool as a midfielder" (NOT "In this FPL info, Mohamed Salah...")
 - If you don't have the answer: Simply say "I don't have that information"
 - Ignore ALL technical metadata (IDs, element codes, database fields, duplicate entries, field names)
 - Extract ONLY FPL-relevant information (player names, positions, teams, stats, etc.)
