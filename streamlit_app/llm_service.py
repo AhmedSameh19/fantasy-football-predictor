@@ -76,7 +76,7 @@ def openai_generate(context: str, question: str) -> dict:
 
 User Question: {question}
 
-CRITICAL Instructions:
+CRITICAL Instructions and Tasks:
 - Answer the question naturally as if you already know this FPL information
 - NEVER reference the information source in ANY way:
   - NEVER say: "from the data", "based on what I see", "from what's provided", "from the information"
@@ -150,7 +150,7 @@ def openrouter_generate(context: str, question: str) -> dict:
 
 User Question: {question}
 
-CRITICAL Instructions:
+CRITICAL Instructions and Tasks:
 - Answer the question naturally as if you already know this FPL information
 - NEVER reference the information source in ANY way:
   - NEVER say: "from the data", "based on what I see", "from what's provided", "from the information"
@@ -219,7 +219,7 @@ def gemini_generate(context: str, question: str) -> dict:
 
 User Question: {question}
 
-CRITICAL Instructions:
+CRITICAL Instructions and Tasks:
 - Answer the question naturally as if you already know this FPL information
 - NEVER reference the information source in ANY way:
   - NEVER say: "from the data", "based on what I see", "from what's provided", "from the information"
