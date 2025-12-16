@@ -17,7 +17,7 @@
     "description": "Retrieve a player's performance in a specific gameweek.",
     "required_entities": ["player", "season", "gw"],
     "optional_entities": [],
-    "cypher": "MATCH (p:Player {player_name: $player})-[r:PLAYED_IN]->(f:Fixture) MATCH (g:Gameweek {season: $season, GW_number: $gw})-[:HAS_FIXTURE]->(f) RETURN p, r, f;"
+    "cypher": "MATCH (p:Player {player_name: $player})-[r:PLAYED_IN]->(f:Fixture) MATCH (g:Gameweek {season: $season, GW_number: $gw})-[:HAS_FIXTURE]->(f) RETURN p, r, f, properties(r) AS r_props;"
   },
 
   "fixture_details": {

@@ -21,6 +21,25 @@ import time
 import networkx as nx
 import plotly.graph_objects as go
 
+import os
+from dotenv import load_dotenv
+from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.messages import HumanMessage, SystemMessage
+
+# Load environment variables
+load_dotenv(override=True)
+
+# Verify keys are loaded
+print("OpenAI Key loaded:", bool(os.getenv("OPENAI_KEY")))
+print("OpenRouter Key loaded:", bool(os.getenv("OPEN_ROUTER_KEY")))
+print("Google API Key loaded:", bool(os.getenv("GEMINI_KEY")))
+
+OPENAI_KEY = KEY = os.getenv("OPENAI_KEY")
+OPENROUTER_KEY = KEY = os.getenv("OPEN_ROUTER_KEY")
+GEMINI_KEY = KEY = os.getenv("GEMINI_KEY")
+
+
 st.set_page_config(
     page_title="Fantasy Premier League Assistant",
     page_icon="⚽",
@@ -121,23 +140,21 @@ client = OpenAI(
 )
 
 def call_open_router(prompt: str) -> str:
-    completion = client.chat.completions.create(
-        extra_body={},
-        model="meta-llama/llama-3.3-70b-instruct:free",
-        messages=[
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": prompt
-                    }
-                ]
-            }
-        ],
-        max_tokens=1000  # Limit the response length to reduce cost
+
+    openai_llm = ChatOpenAI(
+        model="gpt-5.1",
+        temperature=0.7,
+        api_key=OPENAI_KEY,
+        max_tokens=1000
     )
-    return completion.choices[0].message.content
+
+    messages = [
+        HumanMessage(content=prompt)
+    ]
+
+    response = openai_llm.invoke(messages)
+
+    return response.content
 
 
 
@@ -749,26 +766,6 @@ def get_context(question):
 
     return unified_context,normalized_baseline
 
-
-
-# ===== Cell 12 =====
-import os
-from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.messages import HumanMessage, SystemMessage
-
-# Load environment variables
-load_dotenv(override=True)
-
-# Verify keys are loaded
-print("OpenAI Key loaded:", bool(os.getenv("OPENAI_KEY")))
-print("OpenRouter Key loaded:", bool(os.getenv("OPEN_ROUTER_KEY")))
-print("Google API Key loaded:", bool(os.getenv("GEMINI_KEY")))
-
-OPENAI_KEY = KEY = os.getenv("OPENAI_KEY")
-OPENROUTER_KEY = KEY = os.getenv("OPEN_ROUTER_KEY")
-GEMINI_KEY = KEY = os.getenv("GEMINI_KEY")
 
 
 # ===== Cell 13 =====
